@@ -47,7 +47,7 @@ extraDirectoryName4 = "./dir/"
 
 if you need extra settings, just modify the extra variables. If you need even more, you can copy and paste this. Be sure to modify the extra variables.
 ``` python
-elif checkExtension(fileExtension, extraExtensions5):  # this is an example for if you need extra settings
+elif checkExtension(fileExtension, extraExtensions5):
     print("Moving " + fileName)
     if not os.path.exists(extraDirectoryName5):
             os.mkdir(extraDirectoryName5)
