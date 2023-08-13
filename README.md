@@ -20,6 +20,8 @@ imgExtensions = [".png", ".jpeg", ".jpg", ".gif", ".JPG", ".JPEG"]
 audioExtensions = [".mp3"]
 videoExtensions = [".mp4", ".webm", ".MP4"]
 pdfExtensions = [".pdf"]
+extraExtensions = [""] # you can add your own here
+
 
 # Edir directory names here
 textDirectoryName = "./Text/"
@@ -28,17 +30,14 @@ audioDirectoryName = "./Audio/"
 videoDirectoryName = "./Video/"
 pdfDirectoryName = "./Pdf/"
 otherDirectoryName = "./Other/"
+extraDirectoryName = "./dir/" #you can add your own here
 ```
 
-if you need extra settings, just add another elif at the end:
+if you need extra settings, just modify the extra settings. If you need even more, just copy and paste this code after an elif and edit the extraDirectoryName and extraExtensions variables.
 
 ``` python
-yourNewDirectoryName = "./YourDir/"
-youNewExtensionList = [".something", ".extension"]
-elif checkExtension(fileExtension, yourNewDirectoryName):  
-    print("Moving " + fileName)
-    if not os.path.exists(yourNewDirectoryName):
-        os.mkdir(yourNewDirectoryName)
-    shutil.move(fileName, yourNewDirectoryName + fileName)
-
+    elif checkExtension(fileExtension, extraExtensions):
+        if not os.path.exists(extraDirectoryName):
+            os.mkdir(extraDirectoryName)
+        shutil.move(fileName, extraDirectoryName + fileName) 
 ```

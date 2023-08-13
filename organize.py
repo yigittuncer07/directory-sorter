@@ -7,6 +7,7 @@ imgExtensions = [".png", ".jpeg", ".jpg", ".gif", ".JPG", ".JPEG"]
 audioExtensions = [".mp3"]
 videoExtensions = [".mp4", ".webm", ".MP4"]
 pdfExtensions = [".pdf"]
+extraExtensions = [""] # you can add your own here
 
 # Edir directory names here
 textDirectoryName = "./Text/"
@@ -15,6 +16,7 @@ audioDirectoryName = "./Audio/"
 videoDirectoryName = "./Video/"
 pdfDirectoryName = "./Pdf/"
 otherDirectoryName = "./Other/"
+extraDirectoryName = "./dir/" #you can add your own here
 
 
 def checkExtension(extension, list):
@@ -63,6 +65,12 @@ for fl in files:
         if not os.path.exists(pdfDirectoryName):
             os.mkdir(pdfDirectoryName)
         shutil.move(fileName, pdfDirectoryName + fileName)
+        
+    elif checkExtension(fileExtension, extraExtensions):  # this is an example for if you need extra settings
+        print("Moving " + fileName)
+        if not os.path.exists(extraDirectoryName):
+            os.mkdir(extraDirectoryName)
+        shutil.move(fileName, extraDirectoryName + fileName) 
 
     else:
         print("Moving " + fileName + " into Other")
