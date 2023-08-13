@@ -20,7 +20,13 @@ imgExtensions = [".png", ".jpeg", ".jpg", ".gif", ".JPG", ".JPEG"]
 audioExtensions = [".mp3"]
 videoExtensions = [".mp4", ".webm", ".MP4"]
 pdfExtensions = [".pdf"]
-extraExtensions = [""] # you can add your own here
+# you can add your own here
+extraExtensions = [""] 
+extraExtensions0 = [""]
+extraExtensions1 = [""]
+extraExtensions2 = [""]
+extraExtensions3 = [""]
+extraExtensions4 = [""]
 
 
 # Edir directory names here
@@ -30,14 +36,21 @@ audioDirectoryName = "./Audio/"
 videoDirectoryName = "./Video/"
 pdfDirectoryName = "./Pdf/"
 otherDirectoryName = "./Other/"
-extraDirectoryName = "./dir/" #you can add your own here
+ #you can add your own here
+extraDirectoryName = "./dir/"
+extraDirectoryName0 = "./dir/"
+extraDirectoryName1 = "./dir/"
+extraDirectoryName2 = "./dir/"
+extraDirectoryName3 = "./dir/"
+extraDirectoryName4 = "./dir/"
 ```
 
-if you need extra settings, just modify the extra settings. If you need even more, just copy and paste this code after an elif and edit the extraDirectoryName and extraExtensions variables.
-
-``` python
-    elif checkExtension(fileExtension, extraExtensions):
-        if not os.path.exists(extraDirectoryName):
-            os.mkdir(extraDirectoryName)
-        shutil.move(fileName, extraDirectoryName + fileName) 
+if you need extra settings, just modify the extra variables. If you need even more, you can copy and paste this. Be sure to modify the extra variables.
+```
+elif checkExtension(fileExtension, extraExtensions5):  # this is an example for if you need extra settings
+    print("Moving " + fileName)
+    if not os.path.exists(extraDirectoryName5):
+            os.mkdir(extraDirectoryName5)
+    shutil.move(fileName, extraDirectoryName5 + fileName) 
+        
 ```
