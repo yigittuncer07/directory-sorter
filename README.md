@@ -21,15 +21,15 @@ audioExtensions = [".mp3"]
 videoExtensions = [".mp4", ".webm", ".MP4"]
 pdfExtensions = [".pdf"]
 # you can add your own here
-extraExtensions = [""] 
-extraExtensions0 = [""]
-extraExtensions1 = [""]
-extraExtensions2 = [""]
-extraExtensions3 = [""]
-extraExtensions4 = [""]
+extraExtensions = ["", ""] 
+extraExtensions0 = ["", ""]
+extraExtensions1 = ["", ""]
+extraExtensions2 = ["", ""]
+extraExtensions3 = ["", ""]
+extraExtensions4 = ["", ""]
 
 
-# Edir directory names here
+# Edit directory names here
 textDirectoryName = "./Text/"
 imgDirectoryName = "./Image/"
 audioDirectoryName = "./Audio/"
