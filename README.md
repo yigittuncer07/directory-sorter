@@ -33,12 +33,12 @@ otherDirectoryName = "./Other/"
 if you need extra settings, just add another elif at the end:
 
 ``` python
-    yourNewDirectoryName = "./YourDir/"
-    youNewExtensionList = [".something", ".extension"]
-    elif checkExtension(fileExtension, yourNewDirectoryName):  
-        print("Moving " + fileName)
-        if not os.path.exists(yourNewDirectoryName):
-            os.mkdir(yourNewDirectoryName)
-        shutil.move(fileName, yourNewDirectoryName + fileName)
+yourNewDirectoryName = "./YourDir/"
+youNewExtensionList = [".something", ".extension"]
+elif checkExtension(fileExtension, yourNewDirectoryName):  
+    print("Moving " + fileName)
+    if not os.path.exists(yourNewDirectoryName):
+        os.mkdir(yourNewDirectoryName)
+    shutil.move(fileName, yourNewDirectoryName + fileName)
 
 ```
