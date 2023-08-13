@@ -45,7 +45,7 @@ extraDirectoryName3 = "./dir/"
 extraDirectoryName4 = "./dir/"
 ```
 
-if you need extra settings, just modify the extra variables. If you need even more, you can copy and paste this. Be sure to modify the extra variables.
+if you need extra settings, just modify the extra variables. If you need even more, you can copy and paste this before the else in line 122. Be sure to modify the extra variables.
 ``` python
 elif checkExtension(fileExtension, extraExtensions5):
     print("Moving " + fileName)
