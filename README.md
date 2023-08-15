@@ -56,5 +56,5 @@ elif checkExtension(fileExtension, extraExtensions5):
 ```
 
 # To-Do
--Read directories and extensions from a file
--Get path of directory to be sorted from user
+- Read directories and extensions from a file
+- Get path of directory to be sorted from user
