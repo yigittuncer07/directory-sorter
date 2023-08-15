@@ -54,3 +54,7 @@ elif checkExtension(fileExtension, extraExtensions5):
     shutil.move(fileName, extraDirectoryName5 + fileName) 
         
 ```
+
+# To-Do
+-Read directories and extensions from a file
+-Get path of directory to be sorted from user
