@@ -3,7 +3,7 @@ A python directory sorter that will put all your files neatly into their respect
 
 ## How to use
 
-Place the organize.py file into the directory you want to sort and run this command
+Place the organize.py file into the directory you want along with the config.txt file and run this command
 
 ``` shell
 python organize.py
