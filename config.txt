@@ -1,0 +1,5 @@
+txt md Text
+png jpeg jpg gif Image
+mp3 Audio
+mp4 webm Video
+pdf Pdf
