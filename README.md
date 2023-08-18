@@ -3,7 +3,11 @@ A python directory sorter that will put all your files neatly into their respect
 
 ## How to use
 
-Place the organize.py file into the directory you want to sort and run this command
+### Through .exe
+Place the organise.exe file into the directory you want to sort along with the config file and run the exe
+
+### Through command line interface
+Place the organize.py file into the directory you want to sort along with the config file and run this command
 
 ``` shell
 python organize.py
@@ -16,5 +20,4 @@ The format for config.txt is: list of extensions and directory name at end
 
 ## To-Do
 
- - Add exclusion setting in config
  - Add GUI
