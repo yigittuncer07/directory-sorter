@@ -12,10 +12,4 @@ python organize.py
 ## How to customise
 
 You can easily modify the extensions and which files go where in the config.txt (keep this file in the same directory as organize.py)
-The format for config.txt is: list of extensions and directory name at end 
-
-
-## To-Do
-
- - Add exclusion setting
- - Add GUI branch
+The format for config.txt is: list of extensions and directory name at end
