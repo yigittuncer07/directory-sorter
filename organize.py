@@ -1,5 +1,6 @@
 import os
 import shutil
+import keyboard
 
 
 extensions_and_directories = []
@@ -54,6 +55,7 @@ for fl in files:
         os.path.isdir(fl.path)
         or fl.name == "organize.py"
         or fl.name == "config.txt"
+        or fl.name == "organize.exe"
         or fl.name[0] == "."
     ):
         continue
@@ -66,12 +68,15 @@ for fl in files:
         extensions = ex_dir[0]
         directory_name = ex_dir[1]
         if extension_in_list(file_extension, extensions):
-            move_file(file_name,directory_name)
+            move_file(file_name, directory_name)
 
     # If no fit is found, move into other
-    if (os.path.exists(file_name)):
-        move_file(file_name,"Other")
-        
+    if os.path.exists(file_name):
+        move_file(file_name, "Other")
 
 
-print("Completed succesfully")
+print("Completed succesfully, Press ENTER to exit")
+
+while True:
+    if keyboard.is_pressed("enter"):  # returns True if "q" is pressed
+        break
