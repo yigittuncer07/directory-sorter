@@ -1,129 +1,77 @@
 import os
 import shutil
 
-# Edit file extensions here
-textExtensions = [".txt"]
-imgExtensions = [".png", ".jpeg", ".jpg", ".gif", ".JPG", ".JPEG"]
-audioExtensions = [".mp3"]
-videoExtensions = [".mp4", ".webm", ".MP4"]
-pdfExtensions = [".pdf"]
-# you can add your own here
-extraExtensions = ["", ""] 
-extraExtensions0 = ["", ""]
-extraExtensions1 = ["", ""]
-extraExtensions2 = ["", ""]
-extraExtensions3 = ["", ""]
-extraExtensions4 = ["", ""]
 
-# Edir directory names here
-textDirectoryName = "./Text/"
-imgDirectoryName = "./Image/"
-audioDirectoryName = "./Audio/"
-videoDirectoryName = "./Video/"
-pdfDirectoryName = "./Pdf/"
-otherDirectoryName = "./Other/"
- #you can add your own here
-extraDirectoryName = "./dir/"
-extraDirectoryName0 = "./dir/"
-extraDirectoryName1 = "./dir/"
-extraDirectoryName2 = "./dir/"
-extraDirectoryName3 = "./dir/"
-extraDirectoryName4 = "./dir/"
+extensions_and_directories = []
+other_directory = "Other"
 
 
-def checkExtension(extension, list):
+def read_config_file():
+    lines = get_lines("config.txt")
+    line = " "
+    directory_name = ""
+    for line in lines:
+        file_extensions_list = []
+        words = line.split()
+        for j in range(len(words) - 1):
+            file_extensions_list.append(words[j])
+        directory_name = words[len(words) - 1]
+        extensions_and_directories.append([file_extensions_list, directory_name])
+
+
+def get_lines(file_name: str) -> [str]:
+    with open(file_name, "r") as f:
+        lines = f.readlines()
+    return lines
+
+
+def extension_in_list(extension, list):
     if extension in list:
         return True
     return False
 
 
+def get_file_extension(file_name):
+    return os.path.splitext(file_name)[1][1:]
+
+
+def move_file(file_name, directory_name):
+    if not os.path.exists(directory_name):
+        print("creating directory " + directory_name)
+        os.mkdir(directory_name)
+    print("moving " + file_name + " into " + directory_name)
+    shutil.move(file_name, directory_name + "/" + file_name)
+
+
+read_config_file()
 files = os.scandir()
+print(extensions_and_directories)
 
 
 for fl in files:
-    if (os.path.isdir(fl.path)) or fl.name == "organize.py":
-        print(fl.name + " is a directory")
+    # Does not move program files and directories
+    if (
+        os.path.isdir(fl.path)
+        or fl.name == "organize.py"
+        or fl.name == "config.txt"
+        or fl.name[0] == "."
+    ):
         continue
 
-    fileName = fl.name
-    fileExtension = os.path.splitext(fl.name)[1]
+    file_name = fl.name
+    file_extension = get_file_extension(file_name)
 
-    if fileExtension == "": # moves files without extensions into other
-        if not os.path.exists(otherDirectoryName):
-            os.mkdir(otherDirectoryName)
-        shutil.move(fileName, otherDirectoryName + fileName)
-        
-    elif checkExtension(fileExtension, textExtensions):  # check for texts
-        print("Moving " + fileName)
-        if not os.path.exists(textDirectoryName):
-            os.mkdir(textDirectoryName)
-        shutil.move(fileName, textDirectoryName + fileName)
+    # Loops through extensions to find fit
+    for ex_dir in extensions_and_directories:
+        extensions = ex_dir[0]
+        directory_name = ex_dir[1]
+        if extension_in_list(file_extension, extensions):
+            move_file(file_name,directory_name)
 
-    elif checkExtension(fileExtension, imgExtensions):  # check for images
-        print("Moving " + fileName)
-        if not os.path.exists(imgDirectoryName):
-            os.mkdir(imgDirectoryName)
-        shutil.move(fileName, imgDirectoryName + fileName)
-
-    elif checkExtension(fileExtension, audioExtensions):  # check for audio
-        print("Moving " + fileName)
-        if not os.path.exists(audioDirectoryName):
-            os.mkdir(audioDirectoryName)
-        shutil.move(fileName, audioDirectoryName + fileName)
-
-    elif checkExtension(fileExtension, videoExtensions):  # check for video
-        print("Moving " + fileName)
-        if not os.path.exists(videoDirectoryName):
-            os.mkdir(videoDirectoryName)
-        shutil.move(fileName, videoDirectoryName + fileName)
-
-    elif checkExtension(fileExtension, pdfExtensions):  # check for pdf
-        print("Moving " + fileName)
-        if not os.path.exists(pdfDirectoryName):
-            os.mkdir(pdfDirectoryName)
-        shutil.move(fileName, pdfDirectoryName + fileName)
+    # If no fit is found, move into other
+    if (os.path.exists(file_name)):
+        move_file(file_name,"Other")
         
-    elif checkExtension(fileExtension, extraExtensions):  # this is an example for if you need extra settings
-        print("Moving " + fileName)
-        if not os.path.exists(extraDirectoryName):
-            os.mkdir(extraDirectoryName)
-        shutil.move(fileName, extraDirectoryName + fileName)
-        
-    elif checkExtension(fileExtension, extraExtensions0):  # this is an example for if you need extra settings
-        print("Moving " + fileName)
-        if not os.path.exists(extraDirectoryName0):
-            os.mkdir(extraDirectoryName0)
-        shutil.move(fileName, extraDirectoryName0 + fileName) 
-        
-    elif checkExtension(fileExtension, extraExtensions1):  # this is an example for if you need extra settings
-        print("Moving " + fileName)
-        if not os.path.exists(extraDirectoryName1):
-            os.mkdir(extraDirectoryName1)
-        shutil.move(fileName, extraDirectoryName1 + fileName) 
-        
-    elif checkExtension(fileExtension, extraExtensions2):  # this is an example for if you need extra settings
-        print("Moving " + fileName)
-        if not os.path.exists(extraDirectoryName2):
-            os.mkdir(extraDirectoryName2)
-        shutil.move(fileName, extraDirectoryName2 + fileName) 
-        
-    elif checkExtension(fileExtension, extraExtensions3):  # this is an example for if you need extra settings
-        print("Moving " + fileName)
-        if not os.path.exists(extraDirectoryName3):
-            os.mkdir(extraDirectoryName3)
-        shutil.move(fileName, extraDirectoryName3 + fileName) 
-        
-    elif checkExtension(fileExtension, extraExtensions4):  # this is an example for if you need extra settings
-        print("Moving " + fileName)
-        if not os.path.exists(extraDirectoryName4):
-            os.mkdir(extraDirectoryName4)
-        shutil.move(fileName, extraDirectoryName4 + fileName) 
-        
-    else:
-        print("Moving " + fileName + " into Other")
-        if not os.path.exists(otherDirectoryName):
-            os.mkdir(otherDirectoryName)
-        shutil.move(fileName, otherDirectoryName + fileName)
 
 
 print("Completed succesfully")
